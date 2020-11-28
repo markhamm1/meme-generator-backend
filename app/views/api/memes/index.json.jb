@@ -1,0 +1,9 @@
+@memes.map do |meme|
+  {
+    id: meme.id,
+    top_text: meme.top_text,
+    bottom_text: meme.bottom_text,
+    img_url: meme.img_url,
+    user_id: meme.user_id
+  }
+end
