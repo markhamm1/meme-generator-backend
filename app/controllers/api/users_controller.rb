@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      password_digest: params[:password_digest],
+      password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
     if @user.save
