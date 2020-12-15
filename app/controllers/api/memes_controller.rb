@@ -15,7 +15,7 @@ class Api::MemesController < ApplicationController
         top_text: params[:top_text],
         bottom_text: params[:bottom_text],
         img_url: params[:img_url],
-        user_id: 1
+        user_id: current_user.id
       }
     )
     render 'show.json.jb'
