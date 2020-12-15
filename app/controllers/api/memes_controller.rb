@@ -1,7 +1,13 @@
 class Api::MemesController < ApplicationController
+  before_action :authenticate_user
+
   def index
-    @memes = Meme.all
-    render 'index.json.jb'
+    if current_user
+      @memes = Meme.where(user_id: current_user.id)
+      render 'index.json.jb'
+    else
+      render json: {}, status: :unauthorized
+    end
   end
 
   def show
@@ -10,15 +16,19 @@ class Api::MemesController < ApplicationController
   end
 
   def create
-    @meme = Meme.create(
-      {
-        top_text: params[:top_text],
-        bottom_text: params[:bottom_text],
-        img_url: params[:img_url],
-        user_id: current_user.id
-      }
-    )
-    render 'show.json.jb'
+    if current_user
+      @meme = Meme.create(
+        {
+          top_text: params[:top_text],
+          bottom_text: params[:bottom_text],
+          img_url: params[:img_url],
+          user_id: current_user.id
+        }
+      )
+      render 'show.json.jb'
+    else
+      render json: {}, status: :unauthorized
+    end
   end
 
   def update
