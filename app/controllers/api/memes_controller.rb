@@ -17,8 +17,6 @@ class Api::MemesController < ApplicationController
     else
       render json: {}, status: :unauthorized
     end
-    # @meme = Meme.find_by(id: params[:id])
-    # render 'show.json.jb'
   end
 
   def create
@@ -38,20 +36,28 @@ class Api::MemesController < ApplicationController
   end
 
   def update
-    @meme = Meme.find_by(id: params[:id])
-    @meme.top_text = params[:top_text] || @meme.top_text
-    @meme.bottom_text = params[:bottom_text] || @meme.bottom_text
-    @meme.img_url = params[:img_url] || @meme.img_url
-    if @meme.save
-      render 'show.json.jb'
+    if current_user && Meme.find_by(id: params[:id], user_id: current_user.id)
+      @meme = Meme.find_by(id: params[:id])
+      @meme.top_text = params[:top_text] || @meme.top_text
+      @meme.bottom_text = params[:bottom_text] || @meme.bottom_text
+      @meme.img_url = params[:img_url] || @meme.img_url
+      if @meme.save
+        render 'show.json.jb'
+      else
+        render json: {message: "Meme was not updated"}
+      end
     else
-      render json: {message: "Meme was not updated"}
+      render json: {}, status: :unauthorized
     end
   end
 
   def destroy
-    @meme = Meme.find_by(id: params[:id])
-    @meme.destroy
-    render json: {message: "The meme has been deleted"}
+    if current_user && Meme.find_by(id: params[:id], user_id: current_user.id)
+      @meme = Meme.find_by(id: params[:id])
+      @meme.destroy
+      render json: {message: "The meme has been deleted"}
+    else
+      render json: {}, status: :unauthorized
+    end
   end
 end
