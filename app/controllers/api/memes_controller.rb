@@ -11,8 +11,14 @@ class Api::MemesController < ApplicationController
   end
 
   def show
-    @meme = Meme.find_by(id: params[:id])
-    render 'show.json.jb'
+    if current_user && Meme.find_by(id: params[:id], user_id: current_user.id)
+      @meme = Meme.find_by(id: params[:id], user_id: current_user.id)
+      render 'show.json.jb'
+    else
+      render json: {}, status: :unauthorized
+    end
+    # @meme = Meme.find_by(id: params[:id])
+    # render 'show.json.jb'
   end
 
   def create
