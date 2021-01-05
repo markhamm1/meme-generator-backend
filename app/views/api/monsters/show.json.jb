@@ -2,8 +2,8 @@
   id: @monster.id,
   top_text: @monster.top_text,
   bottom_text: @monster.bottom_text,
-  img_url: @monster.head_url,
-  img_url: @monster.body_url,
-  img_url: @monster.leg_url,
+  head_url: @monster.head_url,
+  body_url: @monster.body_url,
+  leg_url: @monster.leg_url,
   user_id: @monster.user_id
 }
