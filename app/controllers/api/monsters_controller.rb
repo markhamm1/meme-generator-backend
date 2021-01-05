@@ -25,9 +25,9 @@ class Api::MonstersController < ApplicationController
         {
           top_text: params[:top_text],
           bottom_text: params[:bottom_text],
-          head_url: params[:head_url],
-          body_url: params[:body_url],
-          leg_url: params[:leg_url],
+          head_url: "/" + params[:head_url],
+          body_url: "/" + params[:body_url],
+          leg_url: "/" + params[:leg_url],
           user_id: current_user.id
         }
       )
