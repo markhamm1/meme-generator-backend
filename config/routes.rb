@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     post "/memes" => "memes#create"
     patch "/memes/:id" => "memes#update"
     delete "/memes/:id" => "memes#destroy"
+
+    get "/monsters" => "monsters#index"
+    get "/monsters/:id" => "monsters#show"
+    post "/monsters" => "monsters#create"
+    patch "/monsters/:id" => "monsters#update"
+    delete "/monsters/:id" => "monsters#destroy"
     
     get "/users" => "users#index"
     post "/users" => "users#create"
