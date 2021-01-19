@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "data": {
+    "bodies": [
+      {
+        "id": "181913649",
+        "name": "Bunny Arms",
+        "url": "bodies/bunny arms.png",
+        "width": 1200,
+        "height": 1200,
+        "box_count": 2
+      },
+      {
+        "id": "112126428",
+        "name": "cats cradle",
+        "url": "bodies/cats cradle.png",
+        "width": 1200,
+        "height": 800,
+        "box_count": 3
+      },
+      {
+        "id": "87743020",
+        "name": "dragon",
+        "url": "bodies/mouth body.png",
+        "width": 600,
+        "height": 908,
+        "box_count": 2
+      },
+      {
+        "id": "129242436",
+        "name": "spiral",
+        "url": "bodies/spiral.png",
+        "width": 482,
+        "height": 361,
+        "box_count": 2
+      },
+      {
+        "id": "131087935",
+        "name": "Venus Flytrap",
+        "url": "bodies/venus flytrap.png",
+        "width": 761,
+        "height": 1024,
+        "box_count": 5
+      }
+    ]
+  }
+}
