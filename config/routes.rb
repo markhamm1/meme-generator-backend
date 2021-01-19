@@ -22,4 +22,7 @@ Rails.application.routes.draw do
     post "/sessions" => "sessions#create"
 
   end
+
+  root 'application#index'
+  get '/*path', to: 'application#index'
 end
